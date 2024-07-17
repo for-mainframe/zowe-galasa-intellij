@@ -19,32 +19,6 @@ import io.kotest.plugin.intellij.toolwindow.nodeDescriptor
 import javax.swing.Icon
 import javax.swing.JTree
 
-class RunAction(text: String,
-                icon: Icon,
-                private val tree: JTree,
-                private val project: Project,
-                private val executorId: String) : AnAction(text, null, icon) {
-
-   override fun actionPerformed(e: AnActionEvent) {
-      runNode(tree, project, executorId, true)
-   }
-
-   override fun update(e: AnActionEvent) {
-      if (e.isFromActionToolbar) {
-         e.presentation.isEnabled = when (tree.selectionPath?.nodeDescriptor()) {
-            is SpecNodeDescriptor -> true
-            is TestNodeDescriptor -> true
-            is ModuleNodeDescriptor -> true
-            else -> false
-         }
-      }
-   }
-
-   override fun getActionUpdateThread(): ActionUpdateThread {
-      return ActionUpdateThread.BGT
-   }
-}
-
 fun runNode(tree: JTree, project: Project, executorId: String, executeBranch: Boolean) {
    val path = tree.selectionPath
    if (path != null) {

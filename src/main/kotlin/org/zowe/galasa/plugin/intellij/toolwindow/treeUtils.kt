@@ -1,4 +1,18 @@
-package io.kotest.plugin.intellij.toolwindow
+/*
+ * Copyright (c) 2024 IBA Group.
+ *
+ * This program and the accompanying materials are made available under the terms of the
+ * Eclipse Public License v2.0 which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-v20.html
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *
+ * Contributors:
+ *   IBA Group
+ *   Zowe Community
+ */
+
+package org.zowe.galasa.plugin.intellij.toolwindow
 
 import com.intellij.ide.util.treeView.PresentableNodeDescriptor
 import javax.swing.JTree
@@ -13,6 +27,15 @@ fun JTree.expandAllNodes(startingIndex: Int, rowCount: Int) {
    }
    if (getRowCount() != rowCount) {
       expandAllNodes(rowCount, getRowCount())
+   }
+}
+
+@Suppress("UNCHECKED_CAST")
+fun JTree.collapseTopLevelNodes() {
+   val root = model.root as DefaultMutableTreeNode
+   for (node in root.children().toList() as List<DefaultMutableTreeNode>) {
+      val path = TreePath(node.path)
+      this.collapsePath(path)
    }
 }
 

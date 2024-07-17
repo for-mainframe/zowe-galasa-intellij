@@ -1,29 +1,6 @@
-# kotest-intellij-plugin
-![build-master](https://github.com/kotest/kotest-intellij-plugin/workflows/build-master/badge.svg)
-![intellij-badge](https://img.shields.io/jetbrains/plugin/v/14080-kotest?label=intellij%20plugin)
-![Downloads](https://img.shields.io/jetbrains/plugin/d/14080)
-![Rating](https://img.shields.io/jetbrains/plugin/r/rating/14080)
+# IBA Group's plug-in for Galasa
 
-The official [Kotest plugin](https://plugins.jetbrains.com/plugin/14080-kotest) for Intellij and Android Studio
-
-## Getting Started
-
-This plugin requires Kotest 4.1.0 or above.
-
-```kotlin
-  val kotestVersion = "4.1.3" or "4.2.6"
-  
-  // and then the kotlin dependencies
-  dependencies {
-    ...
-    testImplementation("io.kotest:kotest-assertions-core-jvm:$kotestVersion") // optional, for kotest assertions
-    testImplementation("io.kotest:kotest-runner-junit5-jvm:$kotestVersion") // required
-  }
-  
-  tasks.withType<Test> { useJUnitPlatform() }
-```
-
-This plugin has been tested with IDEA 2020.3, 2020.2, 2020.1 and 2019.3.1.
+The description will be prepared later
 
 ## Gutter Icons
 

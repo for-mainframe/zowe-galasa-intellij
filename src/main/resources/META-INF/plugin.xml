@@ -1,49 +1,44 @@
 <idea-plugin>
 
-   <id>kotest-plugin-intellij</id>
-   <name>Kotest</name>
+   <id>zowe-galasa-intellij</id>
+   <name>IBA Group's Test Plug-in for Galasa</name>
 
-   <vendor email="sam@sksamuel.com" url="http://github.com/kotest">Kotest</vendor>
+   <vendor email="ukalesnikau@ibagroup.eu" url="http://github.com/for-mainframe/zowe-galasa-intellij">IBA Group</vendor>
 
    <description><![CDATA[
-      Official IntelliJ-based IDEA plugin for <a href="https://github.com/kotest/kotest">Kotest</a>.<br/><br/>
-      This plugin requires the use of Kotest 4.2.0 or newer.
+      To fulfil later
     ]]></description>
-
-   <!-- correct values will be set by the build plugin -->
-   <version>1.0.0</version>
-   <idea-version since-build="223.4884.69"/>
 
    <depends>org.jetbrains.kotlin</depends>
    <depends>com.intellij.modules.java</depends>
    <depends>org.jetbrains.plugins.gradle</depends>
-   <depends optional="true" config-file="intellilang-kotlin-support.xml">org.intellij.intelliLang</depends>
 
    <actions>
-      <action id="io.kotest.actions.NextTestAction"
-              class="io.kotest.plugin.intellij.actions.NextTestAction" text="Next Test"
-              description="Navigate to the next test in this spec class">
-         <add-to-group group-id="CodeMenu" anchor="last"/>
-         <keyboard-shortcut keymap="$default" first-keystroke="alt n"/>
-      </action>
+<!--      <action id="io.kotest.actions.NextTestAction"-->
+<!--              class="io.kotest.plugin.intellij.actions.NextTestAction" text="Next Test"-->
+<!--              description="Navigate to the next test in this spec class">-->
+<!--         <add-to-group group-id="CodeMenu" anchor="last"/>-->
+<!--         <keyboard-shortcut keymap="$default" first-keystroke="alt n"/>-->
+<!--      </action>-->
 
-      <action id="io.kotest.actions.PreviousTestAction"
-              class="io.kotest.plugin.intellij.actions.PreviousTestAction" text="Previous Test"
-              description="Navigate to the previous test in this spec class">
-         <add-to-group group-id="CodeMenu" anchor="last"/>
-         <keyboard-shortcut keymap="$default" first-keystroke="alt P"/>
-      </action>
+<!--      <action id="io.kotest.actions.PreviousTestAction"-->
+<!--              class="io.kotest.plugin.intellij.actions.PreviousTestAction" text="Previous Test"-->
+<!--              description="Navigate to the previous test in this spec class">-->
+<!--         <add-to-group group-id="CodeMenu" anchor="last"/>-->
+<!--         <keyboard-shortcut keymap="$default" first-keystroke="alt P"/>-->
+<!--      </action>-->
    </actions>
 
    <extensions defaultExtensionNs="com.intellij">
-      <configurationType implementation="io.kotest.plugin.intellij.KotestConfigurationType"/>
+<!--      <configurationType implementation="io.kotest.plugin.intellij.KotestConfigurationType"/>-->
 
-      <annotator language="kotlin"
-                 implementationClass="io.kotest.plugin.intellij.annotators.DuplicatedTestNameAnnotator"/>
+<!--      <annotator language="kotlin"-->
+<!--                 implementationClass="io.kotest.plugin.intellij.annotators.DuplicatedTestNameAnnotator"/>-->
 
-      <annotator language="kotlin"
-                 implementationClass="io.kotest.plugin.intellij.annotators.FocusInNestedTestAnnotator"/>
+<!--      <annotator language="kotlin"-->
+<!--                 implementationClass="io.kotest.plugin.intellij.annotators.FocusInNestedTestAnnotator"/>-->
 
+<!--      TODO: this extension was already commented out-->
 <!--      <localInspection groupPath="Kotlin" language="JVM" shortName="ShouldBeInstanceOfInspection"-->
 <!--                       bundle="KotestGadgetsBundle"-->
 <!--                       key="kotest.should.be.instance.of"-->
@@ -51,63 +46,71 @@
 <!--                       enabledByDefault="true" level="WARNING"-->
 <!--                       implementationClass="io.kotest.plugin.intellij.inspections.ShouldBeInstanceOfInspection"/>-->
 
-      <toolWindow id="Kotest" anchor="left" icon="/icon13_greyscale.png"
-                  factoryClass="io.kotest.plugin.intellij.toolwindow.TestExplorerToolWindowFactory"/>
+      <toolWindow id="org.zowe.galasa.plugin.intellij.toolwindow.TestExplorerToolWindowFactory"
+                  anchor="right"
+                  icon="/zowe-icon.svg"
+                  factoryClass="org.zowe.galasa.plugin.intellij.toolwindow.TestExplorerToolWindowFactory"/>
 
-      <lang.structureViewExtension implementation="io.kotest.plugin.intellij.structure.KotestStructureViewExtension"/>
+      <toolWindow id="org.zowe.galasa.plugin.intellij.ctl.GalasaCTLToolWindowFactory"
+                  anchor="bottom"
+                  canCloseContents="false"
+                  factoryClass="org.zowe.galasa.plugin.intellij.ctl.GalasaCTLToolWindowFactory"/>
 
-      <codeInsight.lineMarkerProvider language="kotlin" implementationClass="io.kotest.plugin.intellij.linemarker.InterpolatedTestLineMarker"/>
-      <codeInsight.lineMarkerProvider language="kotlin" implementationClass="io.kotest.plugin.intellij.linemarker.DisabledTestLineMarker"/>
-      <runLineMarkerContributor language="kotlin" implementationClass="io.kotest.plugin.intellij.run.TestRunLineMarkerContributor"/>
-      <runLineMarkerContributor language="kotlin" implementationClass="io.kotest.plugin.intellij.run.SpecRunLineMarkerContributor"/>
+<!--      <lang.structureViewExtension implementation="io.kotest.plugin.intellij.structure.KotestStructureViewExtension"/>-->
 
-      <runConfigurationProducer implementation="io.kotest.plugin.intellij.run.SpecRunConfigurationProducer"/>
-      <runConfigurationProducer implementation="io.kotest.plugin.intellij.run.TestPathRunConfigurationProducer"/>
-      <runConfigurationProducer implementation="io.kotest.plugin.intellij.run.PackageRunConfigurationProducer"/>
-      <runConfigurationProducer implementation="io.kotest.plugin.intellij.run.GradleSpecRunConfigurationProducer"/>
+<!--      <codeInsight.lineMarkerProvider language="kotlin" implementationClass="io.kotest.plugin.intellij.linemarker.InterpolatedTestLineMarker"/>-->
+<!--      <codeInsight.lineMarkerProvider language="kotlin" implementationClass="io.kotest.plugin.intellij.linemarker.DisabledTestLineMarker"/>-->
+      <runLineMarkerContributor implementationClass="org.zowe.galasa.plugin.intellij.run.GalasaTestRunLineMarkerContributor"
+                                language=""/>
+<!--      <runLineMarkerContributor language="kotlin" implementationClass="io.kotest.plugin.intellij.run.SpecRunLineMarkerContributor"/>-->
 
-      <implicitUsageProvider implementation="io.kotest.plugin.intellij.implicits.SpecImplicitUsageProvider"/>
-      <implicitUsageProvider implementation="io.kotest.plugin.intellij.implicits.ProjectConfigImplicitUsageProvider"/>
-      <implicitUsageProvider implementation="io.kotest.plugin.intellij.implicits.AutoScanUsageProvider"/>
+<!--      <runConfigurationProducer implementation="io.kotest.plugin.intellij.run.SpecRunConfigurationProducer"/>-->
+<!--      <runConfigurationProducer implementation="io.kotest.plugin.intellij.run.TestPathRunConfigurationProducer"/>-->
+<!--      <runConfigurationProducer implementation="io.kotest.plugin.intellij.run.PackageRunConfigurationProducer"/>-->
+<!--      <runConfigurationProducer implementation="io.kotest.plugin.intellij.run.GradleSpecRunConfigurationProducer"/>-->
 
-      <testFinder implementation="io.kotest.plugin.intellij.KotestTestFinder"/>
-      <testFramework id="Kotest" implementation="io.kotest.plugin.intellij.KotestTestFramework"/>
-      <testGenerator language="kotlin" implementationClass="io.kotest.plugin.intellij.KotestTestGenerator"/>
+<!--      <implicitUsageProvider implementation="io.kotest.plugin.intellij.implicits.SpecImplicitUsageProvider"/>-->
+<!--      <implicitUsageProvider implementation="io.kotest.plugin.intellij.implicits.ProjectConfigImplicitUsageProvider"/>-->
+<!--      <implicitUsageProvider implementation="io.kotest.plugin.intellij.implicits.AutoScanUsageProvider"/>-->
 
-      <codeInsight.externalLibraryResolver implementation="io.kotest.plugin.intellij.KotestExternalLibraryResolver"/>
-      <stacktrace.fold substring="at io.kotest."/>
-      <programRunner implementation="io.kotest.plugin.intellij.run.KotestDebuggerRunner"/>
-      <library.dependencyScopeSuggester implementation="io.kotest.plugin.intellij.KotestDependencyScopeSuggester"/>
+<!--      <testFinder implementation="io.kotest.plugin.intellij.KotestTestFinder"/>-->
+<!--      <testFramework id="Kotest" implementation="io.kotest.plugin.intellij.KotestTestFramework"/>-->
+<!--      <testGenerator language="kotlin" implementationClass="io.kotest.plugin.intellij.KotestTestGenerator"/>-->
 
-      <intentionAction>
-         <className>io.kotest.plugin.intellij.intentions.SoftAssertIntention</className>
-         <category>Kotlin/Test</category>
-         <descriptionDirectoryName>SoftAssertIntention</descriptionDirectoryName>
-      </intentionAction>
+<!--      <codeInsight.externalLibraryResolver implementation="io.kotest.plugin.intellij.KotestExternalLibraryResolver"/>-->
+<!--      <stacktrace.fold substring="at io.kotest."/>-->
+<!--      <programRunner implementation="org.zowe.galasa.plugin.intellij.run.GalasaDebuggerRunner"/>-->
+<!--      <library.dependencyScopeSuggester implementation="io.kotest.plugin.intellij.KotestDependencyScopeSuggester"/>-->
 
-      <intentionAction>
-         <className>io.kotest.plugin.intellij.intentions.BangIntention</className>
-         <category>Kotlin/Test</category>
-         <descriptionDirectoryName>BangIntention</descriptionDirectoryName>
-      </intentionAction>
+<!--      <intentionAction>-->
+<!--         <className>io.kotest.plugin.intellij.intentions.SoftAssertIntention</className>-->
+<!--         <category>Kotlin/Test</category>-->
+<!--         <descriptionDirectoryName>SoftAssertIntention</descriptionDirectoryName>-->
+<!--      </intentionAction>-->
 
-      <intentionAction>
-         <className>io.kotest.plugin.intellij.intentions.ShouldThrowIntention</className>
-         <category>Kotlin/Test</category>
-         <descriptionDirectoryName>ShouldThrowIntention</descriptionDirectoryName>
-      </intentionAction>
+<!--      <intentionAction>-->
+<!--         <className>io.kotest.plugin.intellij.intentions.BangIntention</className>-->
+<!--         <category>Kotlin/Test</category>-->
+<!--         <descriptionDirectoryName>BangIntention</descriptionDirectoryName>-->
+<!--      </intentionAction>-->
 
-      <intentionAction>
-         <className>io.kotest.plugin.intellij.intentions.ShouldThrowAnyIntention</className>
-         <category>Kotlin/Test</category>
-         <descriptionDirectoryName>ShouldThrowAnyIntention</descriptionDirectoryName>
-      </intentionAction>
+<!--      <intentionAction>-->
+<!--         <className>io.kotest.plugin.intellij.intentions.ShouldThrowIntention</className>-->
+<!--         <category>Kotlin/Test</category>-->
+<!--         <descriptionDirectoryName>ShouldThrowIntention</descriptionDirectoryName>-->
+<!--      </intentionAction>-->
 
-      <intentionAction>
-         <className>io.kotest.plugin.intellij.intentions.ShouldThrowExactlyIntention</className>
-         <category>Kotlin/Test</category>
-         <descriptionDirectoryName>ShouldThrowExactlyIntention</descriptionDirectoryName>
-      </intentionAction>
+<!--      <intentionAction>-->
+<!--         <className>io.kotest.plugin.intellij.intentions.ShouldThrowAnyIntention</className>-->
+<!--         <category>Kotlin/Test</category>-->
+<!--         <descriptionDirectoryName>ShouldThrowAnyIntention</descriptionDirectoryName>-->
+<!--      </intentionAction>-->
+
+<!--      <intentionAction>-->
+<!--         <className>io.kotest.plugin.intellij.intentions.ShouldThrowExactlyIntention</className>-->
+<!--         <category>Kotlin/Test</category>-->
+<!--         <descriptionDirectoryName>ShouldThrowExactlyIntention</descriptionDirectoryName>-->
+<!--      </intentionAction>-->
    </extensions>
 
 </idea-plugin>
